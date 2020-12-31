@@ -5,7 +5,7 @@ Dicas:
 Atualize a versão do pip;
 Verifique se a versão do Chrome Driver está compatível com a do Google Chrome
 
-Obs.: Há o risco que o nome das classes do navegador mude, em casos de uma refatoração por exemplo...
+Obs.: Há o risco que o mude nome das classes do navegador, em casos de uma refatoração por exemplo...
 
 
 '''
@@ -23,7 +23,7 @@ class whatsappBot:
         self.mensagem = "Mensagem de Teste"
         self.grupos = ["Teste","Teste2"] 
 
-     #Configurando as opções do webdriver
+     # Configurando as opções do webdriver
         options = webdriver.ChromeOptions()
         options.add_argument("lang=pt-br") 
         self.driver = webdriver.Chrome(executable_path=r'../main/driver/chromedriver.exe')
@@ -36,14 +36,14 @@ class whatsappBot:
          
          for grupo in self.grupos:                  
           grupo = self.driver.find_element_by_xpath(f"//span[@title='{grupo}']")
-          time.sleep(3)  # Sempre que encontrar um elemento, usa o sleep para dar tempo da página atualizar alguns componentes: classes
-          grupo.click()  # Acredito que faça sentido usar o sleep em toda vez que há classe dinâmica               
+          time.sleep(3)  # Sempre que utilizar um elemento que faça alguma ação, usa o sleep para dar tempo da página atualizar alguns componentes 
+          grupo.click()            
           time.sleep(3)
           chat_box = self.driver.find_element_by_class_name("_3uMse") # Vai procurar pela classe por ser mais simples
           time.sleep(3)
-          chat_box.click() # clicou na área da classe 
+          chat_box.click() # Clicou na área da classe 
           time.sleep(3)
-          chat_box.send_keys(self.mensagem) # a mensagem é inserida no campo
+          chat_box.send_keys(self.mensagem) # A mensagem é inserida no campo
           botao_enviar = self.driver.find_element_by_xpath("//span[@data-icon='send']")  
           time.sleep(3)
           botao_enviar.click()
